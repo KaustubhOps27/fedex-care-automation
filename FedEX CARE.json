@@ -1,0 +1,1943 @@
+{
+  "name": "FedEX CARE",
+  "nodes": [
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1o_3RCi_fdvecuoJbhRPcpLBBxJMOZIf4hYXEM9hqjV0",
+          "mode": "list",
+          "cachedResultName": "Book1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1o_3RCi_fdvecuoJbhRPcpLBBxJMOZIf4hYXEM9hqjV0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1158656645,
+          "mode": "list",
+          "cachedResultName": "fedex",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1o_3RCi_fdvecuoJbhRPcpLBBxJMOZIf4hYXEM9hqjV0/edit#gid=1158656645"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -480,
+        -144
+      ],
+      "id": "ceae8886-1522-4a63-bc49-0a7db77a4634",
+      "name": "Get row(s) in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "BtK1Dm964YZ1AC56",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        -256,
+        -144
+      ],
+      "id": "f8298f1d-4b72-4b39-be77-1ad0bf4f1972",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "name": "Replace Me",
+      "typeVersion": 1,
+      "position": [
+        -32,
+        -96
+      ],
+      "id": "8b9100fa-530f-48d9-88c2-4982cd107411"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "5adbf1fa-a697-4f64-9f0c-37f9f9e9498f",
+              "name": "row_number",
+              "value": "={{ $json.row_number }}",
+              "type": "number"
+            },
+            {
+              "id": "d016f787-48c2-4654-8eee-316237a1e42d",
+              "name": "ID",
+              "value": "={{ $json['IL,'] }}",
+              "type": "number"
+            },
+            {
+              "id": "83341be4-f39f-4545-8c1b-4c7ee2e97e75",
+              "name": "name",
+              "value": "={{ $json.name }}",
+              "type": "string"
+            },
+            {
+              "id": "62e8970e-ef94-472f-a4b1-c844fcd5c8a4",
+              "name": "invoice_amount",
+              "value": "={{ $json.invoice_amount }}",
+              "type": "number"
+            },
+            {
+              "id": "a4edebec-040a-4632-9010-25022df53341",
+              "name": "outstanding_amount",
+              "value": "={{ $json.outstanding_amount }}",
+              "type": "number"
+            },
+            {
+              "id": "68d262d4-5030-4fbb-9579-10251b852bbd",
+              "name": "due_date",
+              "value": "={{ $json.due_date }}",
+              "type": "string"
+            },
+            {
+              "id": "9f6d88a2-41c0-480d-a72d-b23d61144f7b",
+              "name": "days_overdue",
+              "value": "={{ $json.days_overdue }}",
+              "type": "number"
+            },
+            {
+              "id": "d66acc49-9596-4ba9-95ab-eefae3c97846",
+              "name": "risk_level",
+              "value": "={{ $json.risk_level }}",
+              "type": "string"
+            },
+            {
+              "id": "bb982fb7-8962-4fd8-9cf0-45bfd3f1ba00",
+              "name": "assigned_dca",
+              "value": "={{ $json.assigned_dca }}",
+              "type": "string"
+            },
+            {
+              "id": "706cc2d8-ce0d-4c96-afed-451a53426516",
+              "name": "status",
+              "value": "={{ $json.status }}",
+              "type": "string"
+            },
+            {
+              "id": "9e979e26-9438-419c-9b3a-fa049fcd34d2",
+              "name": "last_update_date",
+              "value": "={{ $json.last_update_date }}",
+              "type": "string"
+            },
+            {
+              "id": "bf03d419-f305-4380-bad8-f690b072fed0",
+              "name": "recovered_amount",
+              "value": "={{ $json.recovered_amount }}",
+              "type": "number"
+            },
+            {
+              "id": "e2732cc4-580e-4b9d-869a-72199bcf908b",
+              "name": "priority_score",
+              "value": "={{ $json.priority_score }}",
+              "type": "number"
+            },
+            {
+              "id": "b3638a95-ce16-4c46-bd33-c311cbee2126",
+              "name": "sla_deadline",
+              "value": "={{ $json.sla_deadline }}",
+              "type": "string"
+            },
+            {
+              "id": "f168a22b-07c1-466f-ad23-7a484850016c",
+              "name": "sla_breached",
+              "value": "={{ $json.sla_breached }}",
+              "type": "number"
+            },
+            {
+              "id": "f590e26a-1278-459a-be6b-be55ed880c2e",
+              "name": "updated_by",
+              "value": "={{ $json.updated_by }}",
+              "type": "string"
+            },
+            {
+              "id": "086329cb-def3-4780-9339-07a4e361be7e",
+              "name": "recovery_date",
+              "value": "={{ $json.recovery_date }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -32,
+        -288
+      ],
+      "id": "e373609f-0a7a-47c5-b3be-e7e0618365a4",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "32f6bf43-5fba-411b-bfc9-82fd9ddae693",
+              "leftValue": "={{ $json.days_overdue }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        192,
+        -288
+      ],
+      "id": "16a70303-26b4-4b7e-ab68-80cb1bdcf9f8",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1o_3RCi_fdvecuoJbhRPcpLBBxJMOZIf4hYXEM9hqjV0",
+          "mode": "list",
+          "cachedResultName": "Book1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1o_3RCi_fdvecuoJbhRPcpLBBxJMOZIf4hYXEM9hqjV0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1158656645,
+          "mode": "list",
+          "cachedResultName": "fedex",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1o_3RCi_fdvecuoJbhRPcpLBBxJMOZIf4hYXEM9hqjV0/edit#gid=1158656645"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -384,
+        448
+      ],
+      "id": "219fde51-9aae-4085-9286-b1e0d2ebf7c4",
+      "name": "Get row(s) in sheet1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "BtK1Dm964YZ1AC56",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        64,
+        448
+      ],
+      "id": "a45e46f2-56a6-4d2e-9f53-746cf9ce3a13",
+      "name": "Loop Over Items1"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "name": "Replace Me1",
+      "typeVersion": 1,
+      "position": [
+        288,
+        496
+      ],
+      "id": "78c4d0b2-c159-43e4-9645-92e521395872"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "9eac592c-c4aa-4be3-893a-518fcd9cd243",
+              "name": "today",
+              "value": "={{ new Date() }}",
+              "type": "number"
+            },
+            {
+              "id": "5fc06f29-f6e8-411f-9d57-0c25c4734715",
+              "name": "days_overdue",
+              "value": "={{ Math.floor((new Date() - new Date($json[\"due_date\"])) / (1000 * 60 * 60 * 24)) }}\n",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        288,
+        304
+      ],
+      "id": "1818cb49-896e-4d11-aaab-fab7e5f32222",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "b5532e59-c294-4e96-8372-7bc7a58052fd",
+              "leftValue": "={{ new Date() }}",
+              "rightValue": "={{ $('Replace Me1').item.json.sla_deadline }}",
+              "operator": {
+                "type": "dateTime",
+                "operation": "after"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        512,
+        304
+      ],
+      "id": "e7d0c789-70d4-40b5-88b0-7e4d6b7f528a",
+      "name": "If2"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "1a4b73b4-071f-41df-b880-f813ea4ea3f5",
+              "leftValue": "={{ $('Get row(s) in sheet1').item.json.risk_level }}",
+              "rightValue": "HIGH",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            },
+            {
+              "id": "75e4c842-c16f-4ebf-8cba-873ed2371283",
+              "leftValue": "={{ $('Get row(s) in sheet1').item.json.days_overdue }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        736,
+        304
+      ],
+      "id": "f2f2120f-1024-48b7-a9e8-5d683ce09417",
+      "name": "If3"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e285bd2d-8860-489b-aa16-8101652543dc",
+              "name": "assigned_dca",
+              "value": "={{ $('Get row(s) in sheet1').item.json.assigned_dca }}",
+              "type": "string"
+            },
+            {
+              "id": "fcb2f459-5c27-4895-9758-379b54c00f6d",
+              "name": "status",
+              "value": "=ESCALATED",
+              "type": "string"
+            },
+            {
+              "id": "531b5d2a-07b9-4ae2-b1ce-9cd22238349e",
+              "name": "updated_by",
+              "value": "SYSTEM",
+              "type": "string"
+            },
+            {
+              "id": "06960813-ad18-4e51-abfb-dd5aed691283",
+              "name": "last_update_date",
+              "value": "={{ new Date() }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        960,
+        208
+      ],
+      "id": "3911fdc5-2fe7-4a8f-b292-156120af0b6c",
+      "name": "Edit Fields2"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "24e0541e-e386-4e85-bf03-6fd34e1d601c",
+              "leftValue": "={{ $('Get row(s) in sheet1').item.json.status }}",
+              "rightValue": "IN PROGRESS",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            },
+            {
+              "id": "b026f702-8c82-47b8-8d63-19216e773898",
+              "leftValue": "={{ Number(new Date().getTime()) - Number(new Date($json[\"last_update\"]).getTime()) }}\n",
+              "rightValue": 604800000,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        960,
+        400
+      ],
+      "id": "0328f107-e95e-4deb-984b-b8f407b92cb7",
+      "name": "If4"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1o_3RCi_fdvecuoJbhRPcpLBBxJMOZIf4hYXEM9hqjV0",
+          "mode": "list",
+          "cachedResultName": "Book1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1o_3RCi_fdvecuoJbhRPcpLBBxJMOZIf4hYXEM9hqjV0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1158656645,
+          "mode": "list",
+          "cachedResultName": "fedex",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1o_3RCi_fdvecuoJbhRPcpLBBxJMOZIf4hYXEM9hqjV0/edit#gid=1158656645"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "IL,": "={{ $json['Case ID'] }}",
+            "updated_by": "={{ $json['DCA Name'] }}",
+            "recovered_amount": "={{ $json['Amount Recovered'] }}",
+            "status": "={{ $json['Case Status'] }}",
+            "last_update_date": "={{ $json['Last Updated (DD-MM-YYYY)'] }}"
+          },
+          "matchingColumns": [
+            "IL,"
+          ],
+          "schema": [
+            {
+              "id": "IL,",
+              "displayName": "IL,",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "name",
+              "displayName": "name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "invoice_amount",
+              "displayName": "invoice_amount",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "outstanding_amount",
+              "displayName": "outstanding_amount",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "due_date",
+              "displayName": "due_date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "days_overdue",
+              "displayName": "days_overdue",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "risk_level",
+              "displayName": "risk_level",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "assigned_dca",
+              "displayName": "assigned_dca",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "last_update_date",
+              "displayName": "last_update_date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "recovered_amount",
+              "displayName": "recovered_amount",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "priority_score",
+              "displayName": "priority_score",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "sla_deadline",
+              "displayName": "sla_deadline",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "sla_breached",
+              "displayName": "sla_breached",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "updated_by",
+              "displayName": "updated_by",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "recovery_date",
+              "displayName": "recovery_date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1456,
+        -144
+      ],
+      "id": "f114b8b9-c9de-48c0-bfe9-24032246d6cf",
+      "name": "Update row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "BtK1Dm964YZ1AC56",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Initialize array for overdue IDs\nlet overdueIds = [];\n\n// Loop through all items\nfor (let item of $items()) {\n  // Check if days_overdue > 0 AND Case ID exists\n  if (item.json.days_overdue > 0 && item.json['ID']) {\n    overdueIds.push(item.json['ID']);\n  }\n}\n\n// Return comma-separated string of IDs\nreturn [\n  {\n    json: {\n      overdue_case_ids: overdueIds.join(\", \")\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        432,
+        -304
+      ],
+      "id": "6005428a-6216-41c7-a9d1-4a7c329c158a",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -640,
+        864
+      ],
+      "id": "34dd93d0-d8f0-4938-b2c4-d890eadc821a",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "045ab9b3-8813-46f9-a0b8-2d94e50958b5",
+              "name": "ID",
+              "value": 3,
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -416,
+        864
+      ],
+      "id": "9c60dee8-c85c-4e0c-8046-1171bd864dcd",
+      "name": "Edit Fields3"
+    },
+    {
+      "parameters": {
+        "fileSelector": ".n8n-files/python_output.csv",
+        "options": {
+          "dataPropertyName": "data"
+        }
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        -192,
+        864
+      ],
+      "id": "daee9cd8-921e-4562-b598-b82756686d73",
+      "name": "Read/Write Files from Disk",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1.1,
+      "position": [
+        32,
+        864
+      ],
+      "id": "ad80e527-5caf-4f15-b02e-2a381a18ddba",
+      "name": "Extract from File"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "b2dffcfb-ab7b-45d5-b39f-62a543899e24",
+              "leftValue": "={{ $json.case_id }}",
+              "rightValue": "={{ $('Edit Fields3').item.json.ID }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        256,
+        864
+      ],
+      "id": "4d0e78a3-3424-4d1d-be64-e7be96fc8e65",
+      "name": "If5"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1o_3RCi_fdvecuoJbhRPcpLBBxJMOZIf4hYXEM9hqjV0",
+          "mode": "list",
+          "cachedResultName": "Book1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1o_3RCi_fdvecuoJbhRPcpLBBxJMOZIf4hYXEM9hqjV0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1158656645,
+          "mode": "list",
+          "cachedResultName": "fedex",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1o_3RCi_fdvecuoJbhRPcpLBBxJMOZIf4hYXEM9hqjV0/edit#gid=1158656645"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        480,
+        864
+      ],
+      "id": "dd8b95d5-3dc1-4ed4-bb50-3087cfe1599c",
+      "name": "Get row(s) in sheet2",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "BtK1Dm964YZ1AC56",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "9659d573-123c-4b0c-b130-fb4f822f30d3",
+              "leftValue": "={{ $('Edit Fields3').item.json.ID }}",
+              "rightValue": "={{ $json.ID }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.3,
+      "position": [
+        928,
+        864
+      ],
+      "id": "c01730e9-3671-466c-bca2-0b2cfb575e17",
+      "name": "Filter"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "03b7c100-9b9a-464a-a9fb-a41df412cff4",
+              "name": "ID",
+              "value": "={{ $json.ID }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        704,
+        864
+      ],
+      "id": "cb1fccd5-3aa8-4aa7-9627-9fa054c987e6",
+      "name": "Edit Fields4"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "3092b80e-2e62-4879-a500-3593e4edc589",
+              "leftValue": "={{ $('Get row(s) in sheet2').item.json.assigned_dca }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "empty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        1152,
+        864
+      ],
+      "id": "330a05b1-1baa-4762-a1f1-46ad6dbe7ea5",
+      "name": "If6"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1o_3RCi_fdvecuoJbhRPcpLBBxJMOZIf4hYXEM9hqjV0",
+          "mode": "list",
+          "cachedResultName": "Book1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1o_3RCi_fdvecuoJbhRPcpLBBxJMOZIf4hYXEM9hqjV0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1158656645,
+          "mode": "list",
+          "cachedResultName": "fedex",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1o_3RCi_fdvecuoJbhRPcpLBBxJMOZIf4hYXEM9hqjV0/edit#gid=1158656645"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "assigned_dca": "={{ $('Extract from File').item.json.recommended_dca }}",
+            "risk_level": "={{ $('Extract from File').item.json.customer_risk }}",
+            "last_update_date": "{{ $now }}"
+          },
+          "matchingColumns": [
+            "ID"
+          ],
+          "schema": [
+            {
+              "id": "ID",
+              "displayName": "ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "name",
+              "displayName": "name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "invoice_amount",
+              "displayName": "invoice_amount",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "outstanding_amount",
+              "displayName": "outstanding_amount",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "due_date",
+              "displayName": "due_date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "days_overdue",
+              "displayName": "days_overdue",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "risk_level",
+              "displayName": "risk_level",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "assigned_dca",
+              "displayName": "assigned_dca",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "last_update_date",
+              "displayName": "last_update_date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "recovered_amount",
+              "displayName": "recovered_amount",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "priority_score",
+              "displayName": "priority_score",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "sla_deadline",
+              "displayName": "sla_deadline",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "sla_breached",
+              "displayName": "sla_breached",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "updated_by",
+              "displayName": "updated_by",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "recovery_date",
+              "displayName": "recovery_date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "dca_email",
+              "displayName": "dca_email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1376,
+        864
+      ],
+      "id": "f0a8571d-9acd-4919-9f7a-b80c78a2a3cf",
+      "name": "Update row in sheet1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "BtK1Dm964YZ1AC56",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "daysInterval": 10
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        -640,
+        1312
+      ],
+      "id": "8601a184-991c-407a-b73c-a4963c8367d3",
+      "name": "Schedule Trigger2"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1o_3RCi_fdvecuoJbhRPcpLBBxJMOZIf4hYXEM9hqjV0",
+          "mode": "list",
+          "cachedResultName": "Book1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1o_3RCi_fdvecuoJbhRPcpLBBxJMOZIf4hYXEM9hqjV0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1158656645,
+          "mode": "list",
+          "cachedResultName": "fedex",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1o_3RCi_fdvecuoJbhRPcpLBBxJMOZIf4hYXEM9hqjV0/edit#gid=1158656645"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -416,
+        1312
+      ],
+      "id": "59ac2ad1-67e8-4b47-9899-87ccca73376e",
+      "name": "Get row(s) in sheet3",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "BtK1Dm964YZ1AC56",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "5f0d75a6-61e1-4613-a26b-f26993f4abed",
+              "leftValue": "={{ Date.now() - new Date($json.last_updated_at).getTime() }}",
+              "rightValue": 604800000,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -192,
+        1216
+      ],
+      "id": "7612e783-1cc3-42d6-8012-d2a0c51cd8fa",
+      "name": "If7"
+    },
+    {
+      "parameters": {
+        "sendTo": "={{$json.dca_email}}",
+        "subject": "=Reminder: Pending FedEx Case {{ $json.case_id }} – 7 Days Without Update",
+        "emailType": "text",
+        "message": "=Hello,  \nThis is a reminder regarding the FedEx case assigned to you that has not received any update in the last 7 days.  \nCase Details  Case ID: {{ $json.case_id }}  \nPriority Level: {{ $json.priority_level }}  \nDays Overdue: {{ $json.days_overdue }}  \nAssigned Date: {{ $json.assigned_date }}  \nPlease take action on this case and update the current status using the form below:  \n👉 Update Case Status Form: http://localhost:5678/form/840de3e1-f034-46ca-903d-eba81c59b4f6    \nTimely updates are important to maintain SLA compliance. \nIf the case is already resolved, kindly update the form accordingly.  \nRegards, \nCARE Team.",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        32,
+        1216
+      ],
+      "id": "25e65467-5d53-49b5-810d-d14e65a3e017",
+      "name": "Send a message3",
+      "webhookId": "a1706c11-55f9-4756-9c25-5010cfcead40",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "FQhM33z1nX1iwAwr",
+          "name": "TEST"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "3d3278d1-5eb7-486d-899a-cbae99c9a24f",
+              "leftValue": "={{ Date.now() - new Date($json.last_updated_at).getTime() }}\n",
+              "rightValue": 1209600000,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -192,
+        1408
+      ],
+      "id": "71fe11cb-377f-4459-af9d-6ed0aa82a14e",
+      "name": "If8"
+    },
+    {
+      "parameters": {
+        "sendTo": "fedx@abc.com",
+        "subject": "=Escalation: SLA Breach on FedEx Case {{ $json.case_id }}",
+        "emailType": "text",
+        "message": "Hello,  \nThis is to inform you of an SLA breach for the following FedEx case. \nThe case has been assigned but has not received any update for more than 14 days despite reminders.\nCASE DETAILS : \nCase ID: {{ $json.case_id }}\nAssigned DCA: {{ $json.recommended_dca }}\nPriority Level: {{ $json.priority_level }}\nDays Overdue: {{ $json.days_overdue }}\nLast Updated On: {{ $json.last_updated_at }}\nKindly review and take necessary action to ensure resolution.\nRegards,\nCARE Team.",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        32,
+        1408
+      ],
+      "id": "8c1e17f3-6610-49ee-a42e-7aed047d136d",
+      "name": "Send a message4",
+      "webhookId": "8f970cb6-1618-48ce-b072-035e6cec1367",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "FQhM33z1nX1iwAwr",
+          "name": "TEST"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "daysInterval": 7,
+              "triggerAtHour": 8
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        -704,
+        -144
+      ],
+      "id": "66f698dd-adee-45fe-b400-1e5226a80757",
+      "name": "Overdue Detection Trigger"
+    },
+    {
+      "parameters": {
+        "sendTo": "fedex@abc.com",
+        "subject": "Overdue FedEx Cases",
+        "emailType": "text",
+        "message": "=Respected Manager,  \nThis is a kind reminder that the following FedEx cases are currently overdue and require attention:  Case IDs: {{ $json.overdue_case_ids }}  Please review and take the necessary action to ensure timely resolution.  \nRegards, \nCARE TEAM.",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        672,
+        -304
+      ],
+      "id": "2bc8214f-dacb-43a3-9860-b542160f0671",
+      "name": "Mail To Manager Regarding No. Of Overdue Cases",
+      "webhookId": "52a38f54-3944-47d5-9d7f-94443996729c",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "FQhM33z1nX1iwAwr",
+          "name": "TEST"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "formTitle": "FedEx Case Status Update – CARE System",
+        "formDescription": "This form is used by Collection and Recovery Analysts (DCAs) to update the current status of assigned FedEx cases.\nPlease ensure that all information provided is accurate and up to date.\nYour submission will automatically update the central system and dashboards, so no separate email or Excel update is required.\nKindly submit the form immediately after any progress or payment update.",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Case ID",
+              "fieldType": "number",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "DCA Name",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Case Status",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Amount Recovered",
+              "fieldType": "number",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Remarks (If Any)",
+              "fieldType": "textarea"
+            },
+            {
+              "fieldLabel": "Last Updated (DD-MM-YYYY)",
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {
+          "appendAttribution": false,
+          "useWorkflowTimezone": false
+        }
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.3,
+      "position": [
+        1232,
+        -144
+      ],
+      "id": "c6b69d04-8c5f-4f85-8c91-193e289f227f",
+      "name": "FedEx Case Status Update",
+      "webhookId": "840de3e1-f034-46ca-903d-eba81c59b4f6"
+    },
+    {
+      "parameters": {
+        "content": "# Overdue Detection & Manager Reminder",
+        "height": 480,
+        "width": 1648,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -768,
+        -352
+      ],
+      "id": "2bbdbbd6-1ddd-435a-89cf-2c9ec81e191d",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "## UPDATION FORM FOR DCA",
+        "height": 240,
+        "width": 480
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1152,
+        -208
+      ],
+      "id": "e1519057-afa6-4277-b4f4-b7874b1fffcc",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 30
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        -608,
+        448
+      ],
+      "id": "38aa70e1-ae30-4210-b526-d6295b9d5978",
+      "name": "AUDIT TRAIL"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "3ef4badf-8dc3-4dfb-b102-56681425f4f8",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "RECOVERED",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -160,
+        448
+      ],
+      "id": "30b5d0a6-67f9-47de-95fd-9481124e972b",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $('Get row(s) in sheet1').item.json.updated_by }}",
+        "subject": "Action Required: Overdue Case Follow-Up",
+        "emailType": "text",
+        "message": "=Hello,|This is to inform you that a FedEx case assigned to you has crossed the due date and there is no update in 7 days, now requires immediate attention.Please review the case details and take the necessary action at the earliest to ensure timely resolution.If the payment has already been completed, kindly update the status accordingly.For any issues or clarifications, feel free to reach out.CASE ID  : {{ $('Get row(s) in sheet1').item.json['IL,'] }}\nDUE DATE : {{ $('Get row(s) in sheet1').item.json.due_date }}|\nUpdate Form link : http://localhost:5678/form/840de3e1-f034-46ca-903d-eba81c59b4f6\nRegards,\nCARE TEAM.",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        1184,
+        352
+      ],
+      "id": "920a5cc5-b294-430c-a4f6-e45079b851f7",
+      "name": "Reminder to DCA",
+      "webhookId": "2386c883-e24b-4a67-88a1-195232256e4e",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "FQhM33z1nX1iwAwr",
+          "name": "TEST"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "# DCA Update via Form (Human-in-the-loop)",
+        "height": 496,
+        "width": 2176,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -768,
+        192
+      ],
+      "id": "1802e4bd-fc1b-4876-8958-4cfcb366f546",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "# Intelligent Case Assignment Engine (CORE)",
+        "height": 352,
+        "width": 2544,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -752,
+        736
+      ],
+      "id": "721e39a5-d754-4861-b42f-30982ce92c47",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $('Get row(s) in sheet2').item.json.dca_email }}",
+        "subject": "=New FedEx Case Assigned | CASE ID: {{ $('Filter').item.json.ID }}",
+        "emailType": "text",
+        "message": "=Hello,\nA new FedEx case has been assigned to you based on system priority analysis.  \nCase Details |\nCase ID:{{ $('Filter').item.json.ID }}   \nPriority Level:{{ $('Extract from File').item.json.priority_level }} \nDays Overdue:{{ $('Extract from File').item.json.days_overdue }}  |\nInvoice Amount:{{ $('Extract from File').item.json.invoice_amount }} \nPlease start working on this case immediately.  Once you take action or complete payment follow-up, update the status using the form below:  \n👉 Update Case Status Form: http://localhost:5678/form/840de3e1-f034-46ca-903d-eba81c59b4f6   Kindly ensure timely updates to maintain SLA compliance.  If you face any issue, reach out to the operations team. \nRegards, \nCARE Team.",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        1600,
+        864
+      ],
+      "id": "24b2c90d-5ca6-49ca-ae4a-1018ed507fc7",
+      "name": "Assignment for new DCA",
+      "webhookId": "9275145a-6973-44a0-a053-1d5bc1d33180",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "FQhM33z1nX1iwAwr",
+          "name": "TEST"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "# SLA Monitoring & Escalation",
+        "height": 400,
+        "width": 1056,
+        "color": 2
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -752,
+        1168
+      ],
+      "id": "57424493-273c-45d5-a394-4651955ad9f1",
+      "name": "Sticky Note4"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Get row(s) in sheet": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Replace Me",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Replace Me": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet1": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Replace Me1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Replace Me1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "If2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If2": {
+      "main": [
+        [
+          {
+            "node": "If3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If3": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "If4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If4": {
+      "main": [
+        [
+          {
+            "node": "Reminder to DCA",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Mail To Manager Regarding No. Of Overdue Cases",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields3": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk": {
+      "main": [
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File": {
+      "main": [
+        [
+          {
+            "node": "If5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If5": {
+      "main": [
+        [
+          {
+            "node": "Get row(s) in sheet2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet2": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields4": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "If6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If6": {
+      "main": [
+        [
+          {
+            "node": "Update row in sheet1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update row in sheet1": {
+      "main": [
+        [
+          {
+            "node": "Assignment for new DCA",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger2": {
+      "main": [
+        [
+          {
+            "node": "Get row(s) in sheet3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet3": {
+      "main": [
+        [
+          {
+            "node": "If7",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "If8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If7": {
+      "main": [
+        [
+          {
+            "node": "Send a message3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If8": {
+      "main": [
+        [
+          {
+            "node": "Send a message4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Overdue Detection Trigger": {
+      "main": [
+        [
+          {
+            "node": "Get row(s) in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "FedEx Case Status Update": {
+      "main": [
+        [
+          {
+            "node": "Update row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AUDIT TRAIL": {
+      "main": [
+        [
+          {
+            "node": "Get row(s) in sheet1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "8c25bab2-ec42-4f6f-8b71-0c6c6fb0af0d",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "52f60827830c685e692e7ac1a41f92d4b090b0b114e6156a09cdf67688370a0d"
+  },
+  "id": "BaG7OZYm3axjBWQN",
+  "tags": []
+}
