@@ -1,6 +1,6 @@
 # fedex-care-automation
 End-to-end case assignment, SLA monitoring, and escalation system built using n8n, Google Sheets, and email automation.
-# FedEx Care Automation System
+# FedEx CARE Automation System
 
 An automation system to manage overdue cases, assign DCAs intelligently, track SLA breaches, and automate reminders and escalations.
 
